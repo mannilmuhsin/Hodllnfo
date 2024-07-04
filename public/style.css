@@ -1,0 +1,311 @@
+/* Base styles */
+body {
+    font-family: 'Oswald', sans-serif;
+    background-color: #191d28;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #191d28;
+    padding: 20px 0;
+}
+
+.header-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 36px;
+    font-weight: 600;
+    color: #3dc6c1;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+select {
+    background-color: #2e3241;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.buy-btn {
+    background-color: #3dc6c1;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.countdown-timer {
+    background-color: #3dc6c1;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.telegram-btn {
+    background-color: #3dc6c1;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.telegram-btn img {
+    margin-right: 10px;
+    height: 20px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-bottom: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #3dc6c1;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.best-price {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.price-header {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.price-value {
+    font-size: 64px;
+    font-weight: 600;
+    color: #3dc6c1;
+    margin-bottom: 10px;
+}
+
+.price-info {
+    display: flex;
+    justify-content: space-around;
+    font-size: 18px;
+    flex-wrap: wrap;
+}
+
+.percentage {
+    color: #3dc6c1;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #2e3241;
+}
+
+th {
+    background-color: #2e3241;
+    font-weight: normal;
+}
+
+footer {
+    background-color: #191d28;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    color: #3dc6c1;
+    text-decoration: none;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1200px) {
+    .header-content, main, .footer-content {
+        padding: 0 15px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .header-controls, .header-right {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 15px;
+    }
+    
+    .price-value {
+        font-size: 48px;
+    }
+    
+    .price-info {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .logo {
+        font-size: 28px;
+    }
+    
+    select, .buy-btn, .telegram-btn {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+    
+    .price-header {
+        font-size: 20px;
+    }
+    
+    .price-value {
+        font-size: 36px;
+    }
+    
+    .price-info {
+        font-size: 14px;
+    }
+    
+    th, td {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .header-controls, .header-right {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    select, .buy-btn, .telegram-btn, .countdown-timer {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .price-value {
+        font-size: 28px;
+    }
+    
+    .price-info {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .price-info > div {
+        margin-bottom: 5px;
+    }
+    
+    table {
+        font-size: 12px;
+    }
+    
+    th, td {
+        padding: 8px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .footer-content > div {
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HODLINFO</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HODLINFO</div>
+            <div class="header-controls">
+                <select id="currencySelect">
+                    <option value="INR">INR</option>
+                </select>
+                <select id="cryptoSelect">
+                    <option value="BTC">BTC</option>
+                    <option value="ETH">ETH</option>
+                    <option value="USDT">USDT</option>
+                    <option value="XRP">XRP</option>
+                    <option value="TRX">TRX</option>
+                    <option value="DASH">DASH</option>
+                    <option value="ZEC">ZEC</option>
+                    <option value="XEM">XEM</option>
+                    <option value="IOST">IOST</option>
+                    <option value="WIN">WIN</option>
+                </select>
+                <button class="buy-btn">BUY BTC</button>
+            </div>
+            <div class="header-right">
+                <div class="countdown-timer">60</div>
+                <button class="telegram-btn">
+                    <img src="https://www.svgrepo.com/show/364900/telegram-logo-fill.svg" alt="Telegram">
+                    Connect Telegram
+                </button>
+                <div class="theme-switch">
+                    <label class="switch">
+                        <input type="checkbox" id="themeToggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="best-price">
+            <div class="price-header">Best Price to Trade</div>
+            <div class="price-value">₹ 23,65,898</div>
+            <div class="price-info">
+                <div>Average BTC/INR net price including commission</div>
+                <!-- <div class="percentage">0.06 %</div>
+                <div>5 Mins</div>
+                <div class="percentage">0.98 %</div>
+                <div>1 Hour</div> -->
+            </div>
+        </div>
+        <table id="cryptoTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Platform</th>
+                    <th>Last Traded Price</th>
+                    <th>Buy / Sell Price</th>
+                    <th>Difference</th>
+                    <th>Savings</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated here by JavaScript -->
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="copyright">Copyright © 2019</div>
+            <div class="footer-center">HodlInfo.com</div>
+            <div class="social-links">
+                <a href="#" class="social-link">Support</a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
