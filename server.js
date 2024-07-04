@@ -13,12 +13,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // MongoDB connection
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log("connected to MongoDB");
+    console.log("Connected to MongoDB");
   })
   .catch((err) => {
-    console.error("Error connection to MongoDB: ", err);
+    console.error("Error connecting to MongoDB:", err);
   });
 
 // Create a schema for the cryptocurrency data
@@ -36,6 +36,7 @@ const Crypto = mongoose.model('Crypto', cryptoSchema);
 // Function to fetch data from WazirX API and store in the database
 async function fetchAndStoreData() {
   try {
+    console.log("Fetching data from WazirX API...");
     const response = await axios.get('https://api.wazirx.com/api/v2/tickers');
     const tickers = Object.values(response.data);
     
@@ -43,10 +44,12 @@ async function fetchAndStoreData() {
     const top10 = tickers.sort((a, b) => b.volume - a.volume).slice(0, 10);
 
     // Clear existing data in the database
+    console.log("Clearing existing data...");
     await Crypto.deleteMany({});
 
     // Store new data
-    for (const ticker of top10) {
+    console.log("Storing new data...");
+    const cryptoPromises = top10.map(ticker => {
       const crypto = new Crypto({
         name: ticker.name,
         last: parseFloat(ticker.last),
@@ -55,10 +58,12 @@ async function fetchAndStoreData() {
         volume: parseFloat(ticker.volume),
         base_unit: ticker.base_unit,
       });
-      await crypto.save();
-    }
+      return crypto.save();
+    });
 
-    console.log('Data updated successfully');
+    await Promise.all(cryptoPromises);
+
+    console.log("Data updated successfully");
   } catch (error) {
     console.error('Error fetching and storing data:', error);
   }
@@ -67,9 +72,11 @@ async function fetchAndStoreData() {
 // Route to get cryptocurrency data
 app.get('/api/crypto', async (req, res) => {
   try {
+    console.log("Fetching data from MongoDB...");
     const cryptoData = await Crypto.find().sort({ volume: -1 }).limit(10);
     res.json(cryptoData);
   } catch (error) {
+    console.error('Error fetching data:', error);
     res.status(500).json({ message: 'Error fetching data' });
   }
 });

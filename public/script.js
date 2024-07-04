@@ -15,7 +15,11 @@ function updateTimer() {
 
 async function fetchData() {
     try {
+        console.log('Fetching data from /api/crypto...');
         const response = await fetch('/api/crypto');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
         updateTable(data);
     } catch (error) {
@@ -29,8 +33,8 @@ function updateTable(data) {
 
     data.forEach((crypto, index) => {
         const row = document.createElement('tr');
-        const difference = ((crypto.last - crypto.buy) / crypto.buy * 100);
-        const savings = (crypto.last - crypto.buy);
+        const difference = ((crypto.last - crypto.buy) / crypto.buy * 100).toFixed(2);
+        const savings = (crypto.last - crypto.buy).toFixed(2);
         
         row.innerHTML = `
             <td>${index + 1}</td>
