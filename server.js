@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-console.log(MONGODB_URI);
+console.log(process.env.MONGODB_URI);
 
 // MongoDB connection
 mongoose
